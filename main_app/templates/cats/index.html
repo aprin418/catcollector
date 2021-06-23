@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<a href="/cats/create">Add a New Cat!</a>
+<hr />
+{% for cat in cats %}
+<p>Name: {{ cat.name }}</p>
+{% if cat.age > 0 %}
+<p>Age: {{ cat.age }}</p>
+{% else %}
+<p>Age: Kitten</p>
+{% endif %}
+<a href="{% url 'cats_update' cat.id %}">Update Details</a> |
+<a href="{% url 'cats_delete' cat.id %}">DELETE This Cat</a>
+<hr />
+
+{% endfor %} {% endblock %}
