@@ -3,4 +3,8 @@
 <p>Breed: {{ cat.breed }}</p>
 <p>Description: {{ cat.description }}</p>
 <p>Age: {{ cat.age }}</p>
-{% endblock %}
+{% for cattoy in cat.cattoys.all %}
+<div>{{cattoy.name}}</div>
+{% empty %}
+<div>Cat Has No Toys :(</div>
+{% endfor %} {% endblock %}

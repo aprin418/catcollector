@@ -1,8 +1,14 @@
-{% extends 'base.html' %} {% block content %}
+<!-- main_app/templates/index.html -->
+{% extends 'base.html' %} {% load static %} {% block content %}
 <a href="/cats/create">Add a New Cat!</a>
 <hr />
 {% for cat in cats %}
-<p>Name: {{ cat.name }}</p>
+<a href="/cats/{{cat.id}}">
+  <p>Name: {{ cat.name }}</p>
+</a>
+<a href="/user/{{cat.user.username}}">
+  <p>Adopted By: {{cat.user.username}}</p>
+</a>
 {% if cat.age > 0 %}
 <p>Age: {{ cat.age }}</p>
 {% else %}
@@ -11,5 +17,4 @@
 <a href="{% url 'cats_update' cat.id %}">Update Details</a> |
 <a href="{% url 'cats_delete' cat.id %}">DELETE This Cat</a>
 <hr />
-
 {% endfor %} {% endblock %}
